@@ -8,19 +8,79 @@ import "./kinetik.css";
 
 type View = "inicio" | "projetos" | "tutoriais";
 
-const COMPONENTES_BASICOS = [
-  { nome: "Resistor", cor: "#caa06a" },
-  { nome: "LED", cor: "#e8463a" },
-  { nome: "Botão", cor: "#3a3f4c" },
-  { nome: "Potenciômetro", cor: "#2f6fd6" },
-  { nome: "Capacitor", cor: "#2f6fd6" },
-  { nome: "Interruptor", cor: "#4a4f5c" },
-  { nome: "Buzzer", cor: "#4a4f5c" },
-  { nome: "Servo motor", cor: "#2f6fd6" },
-  { nome: "Bateria 9V", cor: "#20232b" },
-  { nome: "Bateria 1,5V", cor: "#2aa198" },
-  { nome: "Placa de ensaio", cor: "#e9ecf1" },
-  { nome: "Arduino Uno", cor: "#2aa198" },
+const COMPONENTES_BASICOS: { nome: string; icone: React.ReactNode }[] = [
+  {
+    nome: "Resistor",
+    icone: (
+      <svg viewBox="0 0 36 36" fill="none"><rect x="6" y="15" width="24" height="7" rx="3.5" fill="#caa06a" /><rect x="11" y="15" width="3" height="7" fill="#7a4a24" /><rect x="16" y="15" width="3" height="7" fill="#c23b22" /><rect x="21" y="15" width="3" height="7" fill="#e3a02a" /><path d="M2 18h6M28 18h6" stroke="#8a93a3" strokeWidth="2" strokeLinecap="round" /></svg>
+    ),
+  },
+  {
+    nome: "LED",
+    icone: (
+      <svg viewBox="0 0 36 36" fill="none"><path d="M18 6c-4.5 0-7 3-7 7 0 4 3 5.5 3 9h8c0-3.5 3-5 3-9 0-4-2.5-7-7-7z" fill="#e8463a" /><rect x="14" y="22" width="8" height="5" rx="1" fill="#b9c3d2" /><path d="M15 29l-2 3M21 29l2 3" stroke="#8a93a3" strokeWidth="1.8" strokeLinecap="round" /></svg>
+    ),
+  },
+  {
+    nome: "Botão",
+    icone: (
+      <svg viewBox="0 0 36 36" fill="none"><rect x="7" y="7" width="22" height="22" rx="4" fill="#3a3f4c" /><circle cx="18" cy="18" r="6" fill="#20232b" /><circle cx="18" cy="18" r="2.4" fill="#8a93a3" /></svg>
+    ),
+  },
+  {
+    nome: "Potenciômetro",
+    icone: (
+      <svg viewBox="0 0 36 36" fill="none"><circle cx="18" cy="20" r="10" fill="#2f6fd6" /><path d="M18 20l5-6" stroke="#cfe0ff" strokeWidth="2" strokeLinecap="round" /><rect x="15" y="4" width="6" height="7" rx="1.5" fill="#8a93a3" /></svg>
+    ),
+  },
+  {
+    nome: "Capacitor",
+    icone: (
+      <svg viewBox="0 0 36 36" fill="none"><rect x="11" y="9" width="14" height="18" rx="3" fill="#2f6fd6" /><path d="M14 9V6M22 9V6" stroke="#8a93a3" strokeWidth="2" strokeLinecap="round" /></svg>
+    ),
+  },
+  {
+    nome: "Interruptor",
+    icone: (
+      <svg viewBox="0 0 36 36" fill="none"><rect x="5" y="14" width="22" height="9" rx="2" fill="#4a4f5c" /><rect x="27" y="16" width="4" height="5" fill="#8a93a3" /><circle cx="10" cy="18.5" r="2" fill="#20232b" /></svg>
+    ),
+  },
+  {
+    nome: "Buzzer",
+    icone: (
+      <svg viewBox="0 0 36 36" fill="none"><circle cx="18" cy="17" r="11" fill="#4a4f5c" /><circle cx="18" cy="17" r="6.5" fill="#20232b" /><rect x="16.5" y="27" width="3" height="6" fill="#8a93a3" /></svg>
+    ),
+  },
+  {
+    nome: "Servo motor",
+    icone: (
+      <svg viewBox="0 0 36 36" fill="none"><rect x="7" y="12" width="18" height="16" rx="2" fill="#2f6fd6" /><rect x="11" y="6" width="10" height="7" rx="1.5" fill="#8a93a3" /><circle cx="16" cy="20" r="3" fill="#cfe0ff" /><path d="M25 16h5M25 22h5" stroke="#8a93a3" strokeWidth="2" strokeLinecap="round" /></svg>
+    ),
+  },
+  {
+    nome: "Bateria 9V",
+    icone: (
+      <svg viewBox="0 0 36 36" fill="none"><rect x="9" y="6" width="18" height="24" rx="2.5" fill="#20232b" /><rect x="9" y="6" width="18" height="8" rx="2.5" fill="#d8742a" /><rect x="15" y="2" width="2.6" height="5" fill="#8a93a3" /><rect x="20" y="2" width="2.6" height="5" fill="#8a93a3" /></svg>
+    ),
+  },
+  {
+    nome: "Bateria 1,5V",
+    icone: (
+      <svg viewBox="0 0 36 36" fill="none"><rect x="14" y="5" width="8" height="26" rx="4" fill="#2aa198" /><rect x="16" y="2" width="4" height="5" fill="#8a93a3" /></svg>
+    ),
+  },
+  {
+    nome: "Placa de ensaio",
+    icone: (
+      <svg viewBox="0 0 36 36" fill="none"><rect x="5" y="8" width="26" height="20" rx="2.5" fill="#e9ecf1" /><circle cx="10" cy="13" r="1" fill="#9aa4b5" /><circle cx="15" cy="13" r="1" fill="#9aa4b5" /><circle cx="20" cy="13" r="1" fill="#9aa4b5" /><circle cx="25" cy="13" r="1" fill="#9aa4b5" /><circle cx="10" cy="23" r="1" fill="#9aa4b5" /><circle cx="15" cy="23" r="1" fill="#9aa4b5" /><circle cx="20" cy="23" r="1" fill="#9aa4b5" /><circle cx="25" cy="23" r="1" fill="#9aa4b5" /></svg>
+    ),
+  },
+  {
+    nome: "Arduino Uno",
+    icone: (
+      <svg viewBox="0 0 36 36" fill="none"><rect x="5" y="9" width="26" height="18" rx="2.5" fill="#2aa198" /><rect x="9" y="13" width="7" height="5" rx="1" fill="#1a1d24" /><circle cx="26" cy="22" r="2.2" fill="#c7cbd1" /></svg>
+    ),
+  },
 ];
 
 export default function AppPage() {
@@ -224,7 +284,7 @@ export default function AppPage() {
             <div className="editor-grid">
               {COMPONENTES_BASICOS.map((c) => (
                 <div className="comp-card" key={c.nome} draggable>
-                  <div className="comp-ic" style={{ background: c.cor, borderRadius: 6 }} />
+                  <div className="comp-ic">{c.icone}</div>
                   <span>{c.nome}</span>
                 </div>
               ))}
